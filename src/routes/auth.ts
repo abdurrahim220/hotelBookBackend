@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken'
 const User = require('../models/user')
 import { check, validationResult } from 'express-validator'
 import bcrypt from 'bcryptjs';
+import verityToken from '../middleware/auth';
 
 
 router.post('/login', [
@@ -35,6 +36,11 @@ router.post('/login', [
     } catch (error) {
         res.status(500).json({ message: "Internal Server Error" })
     }
+})
+
+
+router.get('/validate-token', verityToken, (req: Request, res: Response) => {
+    res.status(200).send({ userId: req.userId })
 })
 
 export default router
