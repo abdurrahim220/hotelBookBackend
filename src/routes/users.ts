@@ -2,8 +2,9 @@
 import express, { Request, Response } from 'express';
 const router = express.Router()
 import jwt from 'jsonwebtoken'
-const User = require('../models/user')
+
 import { check, validationResult } from 'express-validator'
+import  User  from '../models/user';
 
 router.post('/register', [
     check("firstName", "First name is required").isString(),
