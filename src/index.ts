@@ -5,6 +5,7 @@ import "dotenv/config";
 import authRoutes from './routes/auth'
 import userRoutes from './routes/users'
 import hotelRoutes from './routes/my_hotel'
+import searchRoutes from './routes/hotels'
 import cookieParser from 'cookie-parser'
 
 import { v2 as cloudinary } from 'cloudinary'
@@ -32,6 +33,7 @@ app.use(cors({
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/my-hotels", hotelRoutes)
+app.use("/api/hotels", searchRoutes)
 
 app.get("/api/text", async (req: Request, res: Response) => {
   res.json("Hello from endpoint");
